@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confitures artisanales Bertrand Roussanne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:    #F5EDD8;
+    --parch:    #EDE0C4;
+    --lin:      #E0D0B0;
+    --copper:   #A0522D;
+    --copper-l: #C8704A;
+    --amber:    #B5621E;
+    --amber-d:  #7A3E10;
+    --amber-l:  #D9945A;
+    --forest:   #2C4A2E;
+    --forest-l: #4A7550;
+    --ink:      #1E1209;
+    --gold:     #8B5E2A;
+    --gold-l:   #C8A06A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--parch);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--amber-l);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-cauldron {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .nav-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--amber-d);
+    letter-spacing: .03em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color .2s;
+  }
+
+  .nav-links a:hover { color: var(--amber); }
+
+  .nav-cta {
+    background: var(--amber-d);
+    color: var(--cream) !important;
+    padding: 8px 18px;
+    border-radius: 2px;
+    font-size: 12px !important;
+    letter-spacing: .18em !important;
+    text-transform: uppercase;
+    transition: background .2s !important;
+  }
+
+  .nav-cta:hover { background: var(--amber) !important; color: var(--cream) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 92vh;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem;
+  }
+
+  .hero-bg-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(160,82,45,.07) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(160,82,45,.04) 40px);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 680px;
+  }
+
+  .hero-chip {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--forest);
+    border: 1px solid var(--forest);
+    padding: 5px 16px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp .8s ease both;
+  }
+
+  .hero-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: .6rem;
+    animation: fadeUp .8s .1s ease both;
+  }
+
+  .orn-line {
+    height: 1px;
+    width: 60px;
+    background: var(--amber);
+  }
+
+  .orn-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--copper);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .hero-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 600;
+    color: var(--amber-d);
+    line-height: 1.05;
+    letter-spacing: .01em;
+    margin-bottom: .5rem;
+    animation: fadeUp .8s .15s ease both;
+  }
+
+  .hero-sub {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--copper);
+    margin-bottom: 1.5rem;
+    animation: fadeUp .8s .2s ease both;
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #5A3010;
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    animation: fadeUp .8s .25s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    animation: fadeUp .8s .3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--amber-d);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 12px 26px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background .2s;
+  }
+
+  .btn-primary:hover { background: var(--amber); }
+
+  .btn-outline {
+    border: 1px solid var(--amber-d);
+    color: var(--amber-d);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 12px 26px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background .2s, color .2s;
+  }
+
+  .btn-outline:hover { background: var(--amber-d); color: var(--cream); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    animation: fadeUp 1s .6s ease both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: var(--amber);
+    animation: scrollPulse 2s infinite;
+  }
+
+  /* ── SECTION COMMUNE ── */
+  section { position: relative; }
+
+  .section-head {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-kicker {
+    font-size: 11px;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: .75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 600;
+    color: var(--amber-d);
+    line-height: 1.1;
+    margin-bottom: .5rem;
+  }
+
+  .section-italic {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--copper);
+  }
+
+  /* ── PRODUITS ── */
+  .produits {
+    background: var(--parch);
+    padding: 6rem 2rem;
+  }
+
+  .produits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ── CADRE ── */
+  .frame-wrap {
+    position: relative;
+  }
+
+  .frame-outer {
+    position: relative;
+    padding: 10px;
+    border-radius: 1px;
+    transition: transform .3s ease;
+  }
+
+  .frame-outer:hover { transform: translateY(-6px); }
+
+  .frame-inner {
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  /* cadre abricot/cuivré */
+  .frame-amber {
+    background: var(--cream);
+    border: 1px solid var(--gold-l);
+    outline: 3px solid var(--gold);
+    outline-offset: -6px;
+  }
+
+  .frame-amber .frame-inner { border: 1.5px solid var(--gold); }
+
+  /* cadre vert forêt */
+  .frame-forest {
+    background: #F0ECE0;
+    border: 1px solid #6A8060;
+    outline: 3px solid var(--forest);
+    outline-offset: -6px;
+  }
+
+  .frame-forest .frame-inner { border: 1.5px solid var(--forest-l); }
+
+  .frame-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+  .frame-photo svg {
+    width: 80%;
+    height: 80%;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .frame-caption {
+    padding: 10px 12px 12px;
+    text-align: center;
+  }
+
+  .frame-amber .frame-caption { background: var(--cream); border-top: 1px solid var(--gold-l); }
+  .frame-forest .frame-caption { background: #EEF4EE; border-top: 1px solid #6A8060; }
+
+  .cap-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .frame-amber .cap-name { color: var(--amber-d); }
+  .frame-forest .cap-name { color: var(--forest); }
+
+  .cap-sub {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .frame-amber .cap-sub { color: var(--copper); }
+  .frame-forest .cap-sub { color: var(--forest-l); }
+
+  .cap-price {
+    font-size: 12px;
+    letter-spacing: .06em;
+    margin-top: 6px;
+    color: #5A3010;
+  }
+
+  /* coins ornementaux */
+  .corner { position: absolute; width: 22px; height: 22px; }
+  .c-tl { top: -1px; left: -1px; }
+  .c-tr { top: -1px; right: -1px; transform: scaleX(-1); }
+  .c-bl { bottom: -1px; left: -1px; transform: scaleY(-1); }
+  .c-br { bottom: -1px; right: -1px; transform: scale(-1); }
+
+  /* ── SAVOIR-FAIRE ── */
+  .savoir {
+    background: var(--amber-d);
+    color: var(--cream);
+    padding: 6rem 2rem;
+  }
+
+  .savoir .section-title { color: var(--cream); }
+  .savoir .section-kicker { color: var(--amber-l); }
+  .savoir .section-italic { color: var(--amber-l); }
+
+  .savoir-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .savoir-card {
+    border: 1px solid rgba(217,148,90,.35);
+    padding: 1.75rem 1.5rem;
+    border-radius: 2px;
+    text-align: center;
+    transition: background .2s;
+  }
+
+  .savoir-card:hover { background: rgba(245,237,216,.07); }
+
+  .savoir-icon {
+    margin: 0 auto 1rem;
+    width: 48px;
+    height: 48px;
+  }
+
+  .savoir-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: .5rem;
+  }
+
+  .savoir-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(245,237,216,.78);
+  }
+
+  /* ── CHIFFRES ── */
+  .chiffres {
+    background: var(--forest);
+    padding: 4rem 2rem;
+  }
+
+  .chiffres-row {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .chiffre-item { text-align: center; }
+
+  .chiffre-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 600;
+    color: var(--amber-l);
+    line-height: 1;
+    margin-bottom: .25rem;
+  }
+
+  .chiffre-label {
+    font-size: 12px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(245,237,216,.7);
+  }
+
+  /* ── TEMOIGNAGES ── */
+  .temoignages {
+    background: var(--cream);
+    padding: 6rem 2rem;
+  }
+
+  .temoignages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .temo-card {
+    background: var(--parch);
+    border: 1px solid var(--gold-l);
+    border-top: 3px solid var(--amber);
+    padding: 1.5rem;
+    border-radius: 1px;
+  }
+
+  .temo-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: .75rem;
+  }
+
+  .star {
+    width: 12px;
+    height: 12px;
+    background: var(--amber);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+
+  .temo-quote {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #3A2010;
+    margin-bottom: 1rem;
+  }
+
+  .temo-author {
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--copper);
+  }
+
+
+  /* ── FACEBOOK ── */
+  .social-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: .75rem;
+  }
+
+  .social-fb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: rgba(245,237,216,.65);
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+
+  .social-fb:hover { color: var(--amber-l); }
+  .social-fb:hover .fb-icon { background: var(--amber-l); }
+
+  .fb-icon {
+    width: 28px;
+    height: 28px;
+    background: rgba(217,148,90,.4);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--amber-d);
+    padding: 2.5rem 2.5rem 1.5rem;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(217,148,90,.3);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--cream);
+  }
+
+  .footer-brand-sub {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--amber-l);
+    margin-top: 3px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(245,237,216,.65);
+    text-decoration: none;
+    transition: color .2s;
+  }
+
+  .footer-links a:hover { color: var(--amber-l); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(217,148,90,.6);
+    letter-spacing: .08em;
+    text-align: center;
+  }
+
+  /* ── DIVIDER ORNEMENTAL ── */
+  .orn-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 0 auto 3rem;
+    max-width: 300px;
+  }
+
+  .orn-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  .orn-divider-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--copper);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    50% { opacity: .4; transform: scaleY(.6); transform-origin: top; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  /* ── MON HISTOIRE ── */
+  .histoire {
+    background: var(--cream);
+    padding: 6rem 2rem;
+  }
+
+  .histoire-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .histoire-text {}
+
+  .histoire-text p {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.85;
+    color: #3A2010;
+  }
+
+  .histoire-sign {
+    margin-top: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--amber-d);
+    letter-spacing: .04em;
+  }
+
+  .histoire-medallion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .histoire-cap {
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--copper);
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .histoire-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .histoire-medallion { order: -1; }
+
+    /* NAV */
+    nav { padding: 0 1rem; height: 56px; }
+    .nav-links { display: none; }
+    .nav-name { font-size: 15px; }
+
+    /* HERO */
+    .hero { padding: 3rem 1.25rem; min-height: 80vh; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; }
+
+    /* SECTIONS */
+    .produits, .savoir, .temoignages, .histoire, .chiffres { padding: 3.5rem 1.25rem; }
+
+    /* CADRES */
+    .produits-grid {
+      grid-template-columns: 1fr;
+      max-width: 280px;
+      gap: 1.5rem;
+    }
+
+    /* SAVOIR */
+    .savoir-grid { grid-template-columns: 1fr; max-width: 100%; }
+
+    /* CHIFFRES */
+    .chiffres-row { flex-direction: column; gap: 2rem; }
+
+    /* TEMOIGNAGES */
+    .temoignages-grid { grid-template-columns: 1fr; }
+
+    /* FOOTER */
+    footer { padding: 2rem 1.25rem 1.25rem; }
+    .footer-top { flex-direction: column; gap: 1.5rem; }
+    .footer-links { flex-direction: column; gap: .75rem; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <svg class="nav-cauldron" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 14 L29 14 Q31 14 31.5 16.5 L33 25 Q33.5 33 18 34 Q3.5 33 4 25 L5.5 16.5 Q6 14 7 14Z" fill="#C8704A" stroke="#7A3E10" stroke-width=".9"/>
+      <rect x="5.5" y="11.5" width="25" height="4" rx="2" fill="#A0522D" stroke="#7A3E10" stroke-width=".7"/>
+      <path d="M4 18 Q0 18 0 22 Q0 25.5 4 25.5" fill="none" stroke="#A0522D" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M32 18 Q36 18 36 22 Q36 25.5 32 25.5" fill="none" stroke="#A0522D" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M11 8.5 Q10 5.5 11 2.5 Q12 5.5 11 8.5" fill="none" stroke="#B5621E" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M18 7 Q17 4 18 1.5 Q19 4 18 7" fill="none" stroke="#B5621E" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M25 8.5 Q24 5.5 25 2.5 Q26 5.5 25 8.5" fill="none" stroke="#B5621E" stroke-width="1.1" stroke-linecap="round"/>
+      <ellipse cx="18" cy="24" rx="9" ry="3" fill="#7A3E10" opacity=".25"/>
+    </svg>
+    <span class="nav-name">Bertrand Roussanne</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#histoire">Mon histoire</a></li>
+    <li><a href="#produits">Nos confitures</a></li>
+    <li><a href="#savoir">Savoir-faire</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-chip">Confitures artisanales · Fait au chaudron de cuivre</div>
+    <div class="hero-ornament">
+      <div class="orn-line"></div>
+      <div class="orn-diamond"></div>
+      <div class="orn-line"></div>
+    </div>
+    <h1 class="hero-h1">Bertrand Roussanne</h1>
+    <p class="hero-sub">Confitures artisanales</p>
+    <p class="hero-desc">Qu’ils soient glanés ou même sauvages,ils finissent par mijoter lentement dans notre chaudron de cuivre, nos confitures artisanales retrouvent le goût vrai des saisons et la patience des bons gestes.</p>
+    <div class="hero-btns">
+      <a href="#produits" class="btn-primary">Découvrir la gamme</a>
+      <a href="#savoir" class="btn-outline">Notre histoire</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+<!-- MON HISTOIRE -->
+<section class="histoire" id="histoire">
+  <div class="section-head reveal">
+    <p class="section-kicker">La genèse</p>
+    <h2 class="section-title">Mon histoire</h2>
+    <div class="orn-divider"><div class="orn-divider-line"></div><div class="orn-divider-diamond"></div><div class="orn-divider-line"></div></div>
+  </div>
+
+  <div class="histoire-inner">
+    <div class="histoire-text reveal">
+      <p>Avant tout amoureux de la cuisine française, diplômé d'un CAP cuisinier en 1998, la vie m'a éloigné un temps de mes racines. En retournant à ma campagne natale des années plus tard, ce sont les confitures de mon enfance qui m'ont rappelé à moi — ce goût vrai, introuvable dans le commerce. Alors j'ai décidé de le recréer, et de le partager.</p>
+      <div class="histoire-sign">— Bertrand Roussanne</div>
+    </div>
+
+    <div class="histoire-medallion reveal" style="transition-delay:.15s">
+      <!-- Médaillon ornemental : portrait stylisé / chaudron entouré d'une couronne de feuilles -->
+      <svg viewBox="0 0 160 160" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+        <!-- cercle extérieur -->
+        <circle cx="80" cy="80" r="74" fill="none" stroke="var(--gold-l)" stroke-width="1.5"/>
+        <circle cx="80" cy="80" r="68" fill="var(--cream)" stroke="var(--gold)" stroke-width=".8"/>
+        <!-- couronne de feuilles -->
+        <g opacity=".7">
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#4A7550" transform="rotate(0,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#4A7550" transform="rotate(30,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#3A6040" transform="rotate(60,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#4A7550" transform="rotate(90,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#3A6040" transform="rotate(120,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#4A7550" transform="rotate(150,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#4A7550" transform="rotate(180,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#3A6040" transform="rotate(210,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#4A7550" transform="rotate(240,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#3A6040" transform="rotate(270,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#4A7550" transform="rotate(300,80,80)"/>
+          <ellipse cx="80" cy="14" rx="5" ry="9" fill="#4A7550" transform="rotate(330,80,80)"/>
+        </g>
+        <!-- chaudron central -->
+        <path d="M52 78L108 78Q111 78 111.5 81L115 95Q115.5 108 80 109Q44 108 45 95L48.5 81Q49 78 52 78Z" fill="#C8704A" stroke="#A0522D" stroke-width="1"/>
+        <rect x="47" y="74" width="66" height="6" rx="3" fill="#A0522D" stroke="#7A3E10" stroke-width=".7"/>
+        <path d="M45 82Q38 82 38 87Q38 91 45 91" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round"/>
+        <path d="M115 82Q122 82 122 87Q122 91 115 91" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round"/>
+        <!-- vapeur -->
+        <path d="M68 70Q67 62 68 54Q69 62 68 70" fill="none" stroke="#D9945A" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+        <path d="M80 68Q79 59 80 52Q81 59 80 68" fill="none" stroke="#D9945A" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+        <path d="M92 70Q91 62 92 54Q93 62 92 70" fill="none" stroke="#D9945A" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+        <!-- millésime -->
+        <text x="80" y="126" text-anchor="middle" font-size="9" fill="var(--gold)" font-family="'Playfair Display', serif" letter-spacing="2">1998</text>
+        <line x1="58" y1="122" x2="72" y2="122" stroke="var(--gold-l)" stroke-width=".8"/>
+        <line x1="88" y1="122" x2="102" y2="122" stroke="var(--gold-l)" stroke-width=".8"/>
+      </svg>
+      <p class="histoire-cap">CAP Cuisinier · 1998</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRODUITS -->
+<section class="produits" id="produits">
+  <div class="section-head reveal">
+    <p class="section-kicker">Notre savoir-faire</p>
+    <h2 class="section-title">Le geste artisanal</h2>
+    <div class="orn-divider"><div class="orn-divider-line"></div><div class="orn-divider-diamond"></div><div class="orn-divider-line"></div></div>
+    <p class="section-italic">Saveurs de saison, cueillies et transformées avec soin</p>
+  </div>
+
+  <div class="produits-grid">
+
+    <!-- CADRE 1 : La cueillette -->
+    <div class="frame-wrap reveal">
+      <div class="frame-outer frame-amber">
+        <div class="corner c-tl"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#2C4A2E" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#6A8060" stroke-width=".8"/><path d="M2 2L5 5M2 5L4 7M5 2L7 4" stroke="#4A7550" stroke-width=".8"/></svg></div>
+        <div class="corner c-tr"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#2C4A2E" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#6A8060" stroke-width=".8"/><path d="M2 2L5 5M2 5L4 7M5 2L7 4" stroke="#4A7550" stroke-width=".8"/></svg></div>
+        <div class="corner c-bl"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#2C4A2E" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#6A8060" stroke-width=".8"/><path d="M2 2L5 5M2 5L4 7M5 2L7 4" stroke="#4A7550" stroke-width=".8"/></svg></div>
+        <div class="corner c-br"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#2C4A2E" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#6A8060" stroke-width=".8"/><path d="M2 2L5 5M2 5L4 7M5 2L7 4" stroke="#4A7550" stroke-width=".8"/></svg></div>
+        <div class="frame-inner">
+          <div class="frame-photo" style="background:#E8F2E0;">
+            <img src="photo1.jpg" alt="La cueillette">
+              <rect x="0" y="0" width="120" height="90" fill="#C8DDA0" rx="3" opacity=".4"/>
+              <rect x="0" y="118" width="120" height="42" fill="#8B6530" rx="2" opacity=".25"/>
+              <rect x="52" y="55" width="16" height="68" rx="5" fill="#7A4E20"/>
+              <path d="M60 80Q38 72 28 55" fill="none" stroke="#5A3810" stroke-width="4" stroke-linecap="round"/>
+              <path d="M60 75Q82 65 92 50" fill="none" stroke="#5A3810" stroke-width="4" stroke-linecap="round"/>
+              <ellipse cx="34" cy="48" rx="20" ry="14" fill="#4A7550" opacity=".9"/>
+              <ellipse cx="26" cy="54" rx="14" ry="10" fill="#3A6040" opacity=".8"/>
+              <ellipse cx="88" cy="44" rx="18" ry="13" fill="#4A7550" opacity=".9"/>
+              <ellipse cx="96" cy="50" rx="12" ry="9" fill="#3A6040" opacity=".8"/>
+              <circle cx="28" cy="46" r="6" fill="#E8835A"/>
+              <circle cx="38" cy="42" r="5" fill="#D06030"/>
+              <circle cx="44" cy="50" r="4" fill="#F0A060"/>
+              <circle cx="84" cy="40" r="6" fill="#F0C030"/>
+              <circle cx="94" cy="46" r="5" fill="#E8B820"/>
+              <circle cx="90" cy="36" r="4" fill="#E8835A"/>
+              <ellipse cx="60" cy="140" rx="22" ry="10" fill="#C8A060"/>
+              <rect x="38" y="122" width="44" height="18" rx="4" fill="#D4A860"/>
+              <path d="M38 126Q60 118 82 126" fill="none" stroke="#A07830" stroke-width="1.5"/>
+              <path d="M38 130Q60 122 82 130" fill="none" stroke="#A07830" stroke-width="1"/>
+              <path d="M46 122Q60 106 74 122" fill="none" stroke="#7A5820" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="50" cy="124" r="5" fill="#E8835A"/>
+              <circle cx="60" cy="121" r="5" fill="#F0C030"/>
+              <circle cx="70" cy="124" r="5" fill="#D06030"/>
+              <path d="M88 82Q96 78 100 72Q104 66 100 62Q96 58 92 64L90 70" fill="#F5C8A0" stroke="#D4956A" stroke-width="1"/>
+              <path d="M90 70Q88 76 88 82" fill="none" stroke="#D4956A" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CADRE 2 : La préparation -->
+    <div class="frame-wrap reveal" style="transition-delay:.1s">
+      <div class="frame-outer frame-forest">
+        <div class="corner c-tl"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#2C4A2E" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#6A8060" stroke-width=".8"/><path d="M2 2L5 5M2 5L4 7M5 2L7 4" stroke="#4A7550" stroke-width=".8"/></svg></div>
+        <div class="corner c-tr"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#2C4A2E" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#6A8060" stroke-width=".8"/><path d="M2 2L5 5M2 5L4 7M5 2L7 4" stroke="#4A7550" stroke-width=".8"/></svg></div>
+        <div class="corner c-bl"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#2C4A2E" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#6A8060" stroke-width=".8"/><path d="M2 2L5 5M2 5L4 7M5 2L7 4" stroke="#4A7550" stroke-width=".8"/></svg></div>
+        <div class="corner c-br"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#2C4A2E" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#6A8060" stroke-width=".8"/><path d="M2 2L5 5M2 5L4 7M5 2L7 4" stroke="#4A7550" stroke-width=".8"/></svg></div>
+        <div class="frame-inner">
+          <div class="frame-photo" style="background:#E8F2E0;">
+            <img src="photo2.jpg" alt="La préparation">
+              <rect x="5" y="105" width="110" height="50" rx="4" fill="#C49A60"/>
+              <rect x="5" y="105" width="110" height="8" rx="2" fill="#B08040"/>
+              <path d="M10 112Q40 115 70 112Q90 110 115 113" fill="none" stroke="#A07030" stroke-width=".6" opacity=".5"/>
+              <path d="M10 120Q50 122 90 119Q105 118 115 121" fill="none" stroke="#A07030" stroke-width=".6" opacity=".4"/>
+              <rect x="20" y="82" width="80" height="46" rx="5" fill="#E8C880"/>
+              <rect x="22" y="84" width="76" height="42" rx="4" fill="#F0D890" opacity=".6"/>
+              <ellipse cx="90" cy="105" rx="5" ry="3" fill="#C8A040" opacity=".6"/>
+              <rect x="70" y="70" width="4" height="48" rx="2" fill="#9A9A9A"/>
+              <rect x="68" y="70" width="8" height="8" rx="1" fill="#7A5A30"/>
+              <path d="M72 78L76 120L70 120Z" fill="#C0C0C0"/>
+              <ellipse cx="38" cy="100" rx="12" ry="9" fill="#E8835A"/>
+              <ellipse cx="35" cy="98" rx="8" ry="6" fill="#F0A060"/>
+              <line x1="38" y1="91" x2="38" y2="109" stroke="#C06030" stroke-width="1"/>
+              <polygon points="52,88 58,102 46,102" fill="#E03050"/>
+              <polygon points="52,88 55,92 49,92" fill="#E85070" opacity=".7"/>
+              <ellipse cx="55" cy="116" rx="11" ry="8" fill="#F8D820"/>
+              <ellipse cx="55" cy="116" rx="8" ry="5.5" fill="#F0C010" opacity=".7"/>
+              <line x1="55" y1="108" x2="55" y2="124" stroke="#D4A800" stroke-width=".8"/>
+              <line x1="44" y1="116" x2="66" y2="116" stroke="#D4A800" stroke-width=".8"/>
+              <rect x="82" y="78" width="24" height="32" rx="3" fill="#F5EDD8" stroke="#D9945A" stroke-width="1"/>
+              <path d="M82 88Q94 84 106 88" fill="none" stroke="#D9945A" stroke-width=".8"/>
+              <text x="94" y="100" text-anchor="middle" font-size="7" fill="#8B5E2A" font-family="serif"></text>
+              <text x="94" y="107" text-anchor="middle" font-size="5" fill="#A07040" font-family="serif"></text>
+              <circle cx="30" cy="112" r="1.5" fill="#F5EDD8" opacity=".8"/>
+              <circle cx="44" cy="108" r="1" fill="#F5EDD8" opacity=".7"/>
+              <circle cx="64" cy="90" r="1.5" fill="#F5EDD8" opacity=".8"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CADRE 3 : La cuisson -->
+    <div class="frame-wrap reveal" style="transition-delay:.2s">
+      <div class="frame-outer frame-amber">
+        <div class="corner c-tl"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#8B5E2A" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#C8A06A" stroke-width=".8"/><circle cx="3.5" cy="3.5" r="2" fill="#8B5E2A"/><circle cx="3.5" cy="3.5" r="1" fill="#EDE0C4"/></svg></div>
+        <div class="corner c-tr"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#8B5E2A" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#C8A06A" stroke-width=".8"/><circle cx="3.5" cy="3.5" r="2" fill="#8B5E2A"/><circle cx="3.5" cy="3.5" r="1" fill="#EDE0C4"/></svg></div>
+        <div class="corner c-bl"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#8B5E2A" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#C8A06A" stroke-width=".8"/><circle cx="3.5" cy="3.5" r="2" fill="#8B5E2A"/><circle cx="3.5" cy="3.5" r="1" fill="#EDE0C4"/></svg></div>
+        <div class="corner c-br"><svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M2 20L2 4Q2 2 4 2L20 2" fill="none" stroke="#8B5E2A" stroke-width="1.5"/><path d="M5 20L5 7Q5 5 7 5L20 5" fill="none" stroke="#C8A06A" stroke-width=".8"/><circle cx="3.5" cy="3.5" r="2" fill="#8B5E2A"/><circle cx="3.5" cy="3.5" r="1" fill="#EDE0C4"/></svg></div>
+        <div class="frame-inner">
+          <div class="frame-photo" style="background:#FFF2D0;">
+            <img src="photo3.jpg" alt="La cuisson">
+              <path d="M32 140Q28 128 34 118Q30 124 36 112Q32 120 40 108Q36 118 44 110Q40 120 48 112Q44 122 52 115Q50 125 56 120Q54 130 60 124Q58 134 64 128Q62 136 68 130Q66 138 72 132Q68 140 74 136Q70 142 76 140Q82 148 88 140Q84 136 88 130Q94 136 92 128Q96 132 94 122Q98 128 96 118Q100 124 96 110Q102 118 98 108Q102 116 100 104Q106 114 104 126Q108 132 106 140" fill="none" stroke="#E05020" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+              <path d="M44 140Q40 126 48 114Q44 122 54 110Q50 120 60 114Q58 126 66 120Q64 132 72 128Q70 138 76 134Q82 142 80 136Q86 138 84 128Q90 134 88 124" fill="#F08030" opacity=".5"/>
+              <path d="M50 140Q52 128 60 120Q58 130 66 124Q64 134 70 130Q76 138 78 132" fill="#F8B040" opacity=".6"/>
+              <path d="M30 138L60 118L90 138" fill="none" stroke="#7A5A20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 154L30 138M100 154L90 138M60 154L60 138" fill="none" stroke="#7A5A20" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M22 100L98 100Q102 100 103 105L108 126Q109 142 60 144Q11 142 12 126L17 105Q18 100 22 100Z" fill="#C8704A" stroke="#A0522D" stroke-width="1.2"/>
+              <rect x="18" y="95" width="84" height="8" rx="4" fill="#A0522D" stroke="#7A3E10" stroke-width=".8"/>
+              <ellipse cx="42" cy="116" rx="14" ry="18" fill="#D9945A" opacity=".3"/>
+              <ellipse cx="60" cy="100" rx="36" ry="6" fill="#D06030" opacity=".7"/>
+              <circle cx="44" cy="98" r="3" fill="#E8835A" opacity=".8"/>
+              <circle cx="60" cy="97" r="4" fill="#F0A060" opacity=".7"/>
+              <circle cx="74" cy="98" r="3" fill="#E8835A" opacity=".8"/>
+              <path d="M17 108Q8 108 8 116Q8 122 17 122" fill="none" stroke="#A0522D" stroke-width="3" stroke-linecap="round"/>
+              <path d="M103 108Q112 108 112 116Q112 122 103 122" fill="none" stroke="#A0522D" stroke-width="3" stroke-linecap="round"/>
+              <path d="M46 92Q44 82 46 72Q48 82 46 92" fill="none" stroke="#E0D0B0" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+              <path d="M60 90Q58 78 60 66Q62 78 60 90" fill="none" stroke="#E0D0B0" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+              <path d="M74 92Q72 80 74 70Q76 80 74 92" fill="none" stroke="#E0D0B0" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+              <rect x="88" y="56" width="5" height="52" rx="2.5" fill="#C8956A" transform="rotate(20,90,80)"/>
+              <ellipse cx="96" cy="62" rx="7" ry="5" fill="#C8956A" transform="rotate(20,90,80)"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SAVOIR-FAIRE -->
+<section class="savoir" id="savoir">
+  <div class="section-head reveal">
+    <p class="section-kicker">Notre engagement</p>
+    <h2 class="section-title">Le savoir-faire</h2>
+    <div class="orn-divider" style="--amber:rgba(217,148,90,.5);">
+      <div class="orn-divider-line" style="background:rgba(217,148,90,.5);"></div>
+      <div class="orn-divider-diamond" style="background:var(--amber-l);"></div>
+      <div class="orn-divider-line" style="background:rgba(217,148,90,.5);"></div>
+    </div>
+    <p class="section-italic">La tradition au service du goût</p>
+  </div>
+
+  <div class="savoir-grid">
+    <div class="savoir-card reveal">
+      <svg class="savoir-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 18L42 18Q45 18 45.5 21L48 36Q48.5 46 24 47Q0 46 .5 36L3 21Q3.5 18 6 18Z" fill="#C8704A" stroke="#D9945A" stroke-width="1"/>
+        <rect x="4" y="14" width="40" height="6" rx="3" fill="#A0522D" stroke="#D9945A" stroke-width=".8"/>
+        <path d="M3 22Q-2 22-2 27Q-2 31 3 31" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round"/>
+        <path d="M45 22Q50 22 50 27Q50 31 45 31" fill="none" stroke="#A0522D" stroke-width="2" stroke-linecap="round"/>
+        <path d="M13 11Q11 6 13 2Q15 6 13 11" fill="none" stroke="#D9945A" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M24 9Q22 4 24 1Q26 4 24 9" fill="none" stroke="#D9945A" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M35 11Q33 6 35 2Q37 6 35 11" fill="none" stroke="#D9945A" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <h3>Le chaudron de cuivre</h3>
+      <p>Chaque préparation est réalisée à la main dans notre chaudron de cuivre hérité, garant d'une cuisson douce et d'arômes préservés.</p>
+    </div>
+    <div class="savoir-card reveal" style="transition-delay:.12s">
+      <svg class="savoir-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="28" r="16" fill="#2C4A2E"/>
+        <circle cx="18" cy="22" r="10" fill="#4A7550"/>
+        <circle cx="30" cy="20" r="9" fill="#3A5E40"/>
+        <path d="M24 12Q20 4 23 0Q26 4 24 12" fill="none" stroke="#4A7550" stroke-width="2" stroke-linecap="round"/>
+        <path d="M24 8Q32 2 37 6" fill="none" stroke="#4A7550" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="24" cy="30" r="5" fill="#EDE0C4" opacity=".2"/>
+      </svg>
+      <h3>Fruits de saison</h3>
+      <p>Nous sélectionnons uniquement des fruits mûrs à point, cultivés localement, pour capturer l'intensité de chaque saison dans le bocal.</p>
+    </div>
+    <div class="savoir-card reveal" style="transition-delay:.24s">
+      <svg class="savoir-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <!-- sac de sucre de canne -->
+        <rect x="12" y="14" width="24" height="28" rx="4" fill="#C8A060" stroke="#A07830" stroke-width="1"/>
+        <rect x="14" y="16" width="20" height="24" rx="3" fill="#D4B070" opacity=".5"/>
+        <path d="M12 22Q24 18 36 22" fill="none" stroke="#A07830" stroke-width="1"/>
+        <path d="M12 27Q24 23 36 27" fill="none" stroke="#A07830" stroke-width=".7" opacity=".6"/>
+        <!-- canne à sucre -->
+        <path d="M22 14Q20 6 22 2Q24 6 22 14" fill="none" stroke="#4A7550" stroke-width="2" stroke-linecap="round"/>
+        <path d="M26 14Q24 7 26 3Q28 7 26 14" fill="none" stroke="#3A6040" stroke-width="2" stroke-linecap="round"/>
+        <path d="M22 6Q18 4 16 6" fill="none" stroke="#4A7550" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M26 8Q30 6 32 8" fill="none" stroke="#3A6040" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- feuille bio -->
+        <ellipse cx="34" cy="16" rx="6" ry="4" fill="#4A7550" transform="rotate(-30,34,16)" opacity=".9"/>
+        <path d="M31 18Q34 14 37 16" fill="none" stroke="#2C4A2E" stroke-width=".8" stroke-linecap="round"/>
+      </svg>
+      <h3>Du sucre de qualité</h3>
+      <p>Nous utilisons un sucre de canne biologique ce qui donne un goût vraiment différent et sans perte de qualité du fruit au cours de la cuisson.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHIFFRES -->
+<section class="chiffres">
+  <div class="chiffres-row">
+    <div class="chiffre-item reveal">
+      <div class="chiffre-num">100%</div>
+      <div class="chiffre-label">Fruits locaux</div>
+    </div>
+    <div class="chiffre-item reveal" style="transition-delay:.1s">
+      <div class="chiffre-num">40+</div>
+      <div class="chiffre-label">Saveurs</div>
+    </div>
+    <div class="chiffre-item reveal" style="transition-delay:.2s">
+      <div class="chiffre-num">0</div>
+      <div class="chiffre-label">Conservateur</div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Bertrand Roussanne</div>
+      <div class="footer-brand-sub">Confitures artisanales</div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/" target="_blank" class="social-fb">
+          <span class="fb-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="var(--cream)" stroke="none"/>
+            </svg>
+          </span>
+          Suivez-nous
+        </a>
+      </div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#histoire">Mon histoire</a></li>
+      <li><a href="#produits">Nos confitures</a></li>
+      <li><a href="#savoir">Savoir-faire</a></li>
+    </ul>
+  </div>
+  <p class="footer-copy">© 2025 Confitures artisanales Bertrand Roussanne · Faites au chaudron de cuivre</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
